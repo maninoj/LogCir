@@ -25,3 +25,15 @@ class HammingCode:
                 error_position += p
 
         return error_position
+
+
+if __name__ == '__main__':
+    codes = [
+        "0110011001001100",
+        "0001110111011100",
+        "0000000011110000"
+    ]
+
+    for code in codes:
+        hamming = HammingCode(code)
+        print(hamming.check_code())
