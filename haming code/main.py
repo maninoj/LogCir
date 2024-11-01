@@ -1,7 +1,7 @@
 class HammingCode:
     def __init__(self, code):
         self.code = code
-        self.parity_loc = [1, 2, 4, 8, 16]
+        self.parity_loc = [1, 2, 4, 8]
 
     def find_parity(self):
         bit_list = []
@@ -15,3 +15,13 @@ class HammingCode:
             parity_bits[p] = parity_sum % 2
 
         return parity_bits
+
+    def check_code(self):
+        parity_bits = self.find_parity()
+        error_position = 0
+
+        for p in self.parity_loc:
+            if parity_bits[p] != int(self.code[p - 1]):
+                error_position += p
+
+        return error_position
